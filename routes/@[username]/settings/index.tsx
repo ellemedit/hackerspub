@@ -11,8 +11,8 @@ import { TextArea } from "../../../components/TextArea.tsx";
 import { db } from "../../../db.ts";
 import { drive } from "../../../drive.ts";
 import {
-  type AccountLinkFieldProps,
-  AccountLinkFieldSet,
+    type AccountLinkFieldProps,
+    AccountLinkFieldSet,
 } from "../../../islands/AccountLinkFieldSet.tsx";
 import { Timestamp } from "../../../islands/Timestamp.tsx";
 import { kv } from "../../../kv.ts";
@@ -135,8 +135,8 @@ export const handler = define.handlers({
       }
       if (width !== height) { // crop to square
         const size = Math.min(width, height);
-        const left = (width - size) / 2;
-        const top = (height - size) / 2;
+        const left = ((width - size) / 2) | 0;
+        const top = ((height - size) / 2) | 0;
         image = image.extract({ left, top, width: size, height: size });
         width = height = size;
       }
